@@ -1,0 +1,246 @@
+/* Ogwashi-Uku USA Association Design System */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core brand colors - Forest green + Warm gold */
+    --background: 60 20% 99%;
+    --foreground: 150 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 150 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 25% 12%;
+
+    /* Primary: Deep forest green */
+    --primary: 152 45% 22%;
+    --primary-foreground: 60 20% 98%;
+
+    /* Secondary: Warm gold */
+    --secondary: 43 85% 55%;
+    --secondary-foreground: 150 25% 12%;
+
+    --muted: 60 10% 95%;
+    --muted-foreground: 150 10% 45%;
+
+    /* Accent: Light sage */
+    --accent: 145 30% 92%;
+    --accent-foreground: 152 45% 22%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 152 45% 22%;
+
+    --radius: 0.625rem;
+
+    /* Extended palette */
+    --gold: 43 85% 55%;
+    --gold-light: 43 85% 70%;
+    --gold-dark: 43 75% 40%;
+    
+    --green-50: 145 40% 96%;
+    --green-100: 145 35% 90%;
+    --green-200: 148 35% 80%;
+    --green-500: 152 45% 35%;
+    --green-600: 152 45% 22%;
+    --green-700: 152 50% 16%;
+    --green-800: 152 55% 10%;
+    
+    --warm-50: 40 60% 98%;
+    --warm-100: 40 50% 94%;
+    --warm-200: 40 40% 88%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(152 45% 22%) 0%, hsl(152 50% 16%) 50%, hsl(152 55% 10%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 85% 55%) 0%, hsl(43 75% 45%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(60 20% 99%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(150 25% 12% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(150 25% 12% / 0.08), 0 2px 4px -2px hsl(150 25% 12% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(150 25% 12% / 0.08), 0 4px 6px -4px hsl(150 25% 12% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(150 25% 12% / 0.1), 0 8px 10px -6px hsl(150 25% 12% / 0.05);
+    --shadow-glow: 0 0 40px hsl(43 85% 55% / 0.2);
+
+    /* Sidebar */
+    --sidebar-background: 152 45% 22%;
+    --sidebar-foreground: 60 20% 98%;
+    --sidebar-primary: 43 85% 55%;
+    --sidebar-primary-foreground: 150 25% 12%;
+    --sidebar-accent: 152 40% 28%;
+    --sidebar-accent-foreground: 60 20% 98%;
+    --sidebar-border: 152 40% 30%;
+    --sidebar-ring: 43 85% 55%;
+  }
+
+  .dark {
+    --background: 152 30% 8%;
+    --foreground: 60 20% 95%;
+
+    --card: 152 25% 12%;
+    --card-foreground: 60 20% 95%;
+
+    --popover: 152 25% 12%;
+    --popover-foreground: 60 20% 95%;
+
+    --primary: 43 85% 55%;
+    --primary-foreground: 150 25% 12%;
+
+    --secondary: 152 35% 25%;
+    --secondary-foreground: 60 20% 95%;
+
+    --muted: 152 25% 18%;
+    --muted-foreground: 150 15% 60%;
+
+    --accent: 152 30% 20%;
+    --accent-foreground: 60 20% 95%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 152 25% 20%;
+    --input: 152 25% 20%;
+    --ring: 43 85% 55%;
+
+    --sidebar-background: 152 30% 6%;
+    --sidebar-foreground: 60 20% 95%;
+    --sidebar-primary: 43 85% 55%;
+    --sidebar-primary-foreground: 150 25% 12%;
+    --sidebar-accent: 152 30% 15%;
+    --sidebar-accent-foreground: 60 20% 95%;
+    --sidebar-border: 152 25% 18%;
+    --sidebar-ring: 43 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero section styling */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .gold-gradient {
+    background: var(--gradient-gold);
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  /* Text gradient for headings */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: var(--gradient-gold);
+  }
+  
+  /* Section styling */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-6 lg:px-8;
+  }
+  
+  /* Container max widths */
+  .container-tight {
+    @apply max-w-4xl mx-auto;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  /* Button glow effect */
+  .btn-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-glow:hover {
+    box-shadow: 0 0 60px hsl(43 85% 55% / 0.35);
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Stagger children animations */
+  .stagger-children > * {
+    @apply animate-slide-up;
+  }
+  
+  .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+  .stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+  .stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+  .stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+  .stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+}
