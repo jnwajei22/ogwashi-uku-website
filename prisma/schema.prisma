@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum Role {
+  SUPER_ADMIN
+  NATIONAL_ADMIN
+  CHAPTER_ADMIN
+  MEMBER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships   Membership[]
+  registrations EventRegistration[]
+}
+
+model Chapter {
+  id        String   @id @default(cuid())
+  name      String
+  city      String?
+  state     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships   Membership[]
+  events        Event[]
+  announcements Announcement[]
+}
+
+model Membership {
+  id        String   @id @default(cuid())
+  userId    String
+  chapterId String
+  role      Role     @default(MEMBER)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, chapterId])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  chapterId   String?
+  title       String
+  description String?
+  location    String?
+  startAt     DateTime
+  endAt       DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  chapter        Chapter?            @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+  registrations  EventRegistration[]
+}
+
+model EventRegistration {
+  id         String   @id @default(cuid())
+  eventId    String
+  userId     String?
+  guestName  String?
+  guestEmail String?
+  status     String   @default("going")
+  createdAt  DateTime @default(now())
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user  User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model Announcement {
+  id        String   @id @default(cuid())
+  chapterId String?
+  title     String
+  body      String
+  publishAt DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  chapter Chapter? @relation(fields: [chapterId], references: [id], onDelete: SetNull)
+}
