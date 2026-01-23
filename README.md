@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Ogwashi-Uku USA Association Website
 
-## Getting Started
+Official website for the Ogwashi-Uku USA Association — chapters, events, announcements, impact, and member resources.
 
-First, run the development server:
+Tech Stack
 
-```bash
+Next.js (App Router)
+
+TypeScript
+
+React
+
+Tailwind CSS (v3)
+
+Requirements
+
+Node.js 18+ (recommended)
+
+npm
+
+Getting Started
+Install dependencies
+
+npm install
+
+Run the development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build & Run (Production)
+Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm run build
 
-## Learn More
+Start
 
-To learn more about Next.js, take a look at the following resources:
+npm start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Project Structure (High-Level)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+src/app/ — routes (App Router)
 
-## Deploy on Vercel
+src/components/ — shared UI + site components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+src/contexts/ — client contexts (where applicable)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+public/ — static assets
+
+Environment Variables
+
+This project does not require environment variables for basic operation.
+
+If/when you add services (email, auth, database, payments), store secrets in .env.local and never commit them.
+
+Deployment
+
+Works great on Vercel (recommended):
+
+Push to main
+
+Import repo in Vercel
+
+Build command: npm run build
+
+Output: Next.js default
+
+License
+
+MIT — see LICENSE.
